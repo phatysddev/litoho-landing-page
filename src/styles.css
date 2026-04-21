@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@theme {
+  --color-lito-night: #020617;
+  --color-lito-panel: #0f172a;
+  --color-lito-ink: #e5eefc;
+  --color-lito-amber: #f8c444;
+  --font-sans: "Satoshi", "Avenir Next", "Inter", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    background:
+      radial-gradient(circle at top left, rgba(248, 196, 68, 0.12), transparent 24%),
+      radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.12), transparent 18%),
+      linear-gradient(180deg, #06101e 0%, #020617 48%, #01040c 100%);
+  }
+
+  body {
+    min-height: 100vh;
+    color: var(--color-lito-ink);
+    background: transparent;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  code {
+    font-family: "SFMono-Regular", "JetBrains Mono", "Menlo", monospace;
+  }
+
+  ::selection {
+    background: rgba(248, 196, 68, 0.24);
+    color: white;
+  }
+}
