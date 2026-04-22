@@ -1,17 +1,13 @@
 import { html } from "lit";
 import type { LitoLayoutModule } from "@litoho/app";
-import { createSeoDocument } from "../../src/docs";
 
 const layout: LitoLayoutModule<{ appName: string }> = {
   load: () => ({
     appName: "Litoho"
   }),
-  document: () =>
-    createSeoDocument(
-      "Litoho, the Lit-first full-stack framework",
-      "Litoho is a Lit-first full-stack framework with file-based routing, SSR, app-local components, and a CLI that keeps the stack intentionally small.",
-      "/"
-    ),
+  document: {
+    links: [{ rel: "icon", href: "/logo.png", type: "image/png" }]
+  },
   render: ({ children, data }) => html`
     <div class="min-h-screen bg-transparent">
       <header class="sticky top-0 z-30 border-b border-white/10 bg-slate-950/70 backdrop-blur-xl">

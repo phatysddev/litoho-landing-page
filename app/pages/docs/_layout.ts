@@ -1,14 +1,8 @@
 import { html } from "lit";
 import type { LitoLayoutModule } from "@litoho/app";
-import { createSeoDocument, renderDocsMobileNav, renderDocsSidebar } from "../../../src/docs";
+import { renderDocsMobileNav, renderDocsSidebar } from "../../../src/docs";
 
 const layout: LitoLayoutModule = {
-  document: () =>
-    createSeoDocument(
-      "Litoho Documentation",
-      "Documentation for Litoho: getting started, routing, CLI, components, SEO, deployment, and framework comparison.",
-      "/docs"
-    ),
   render: ({ children, pathname }) => html`
     <main class="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:px-8 lg:py-10">
       <div class="mb-6 rounded-[1.35rem] border border-white/10 bg-slate-950/70 p-4 lg:hidden">
