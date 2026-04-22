@@ -14,7 +14,7 @@ pipeline {
     string(name: 'DEPLOY_PATH', defaultValue: '/var/www/litoho-landing-docs', description: 'Application path on the DigitalOcean host')
     string(name: 'SERVICE_NAME', defaultValue: 'litoho-landing-docs', description: 'systemd service name')
     string(name: 'APP_PORT', defaultValue: '3000', description: 'Node application port on the DigitalOcean host')
-    string(name: 'SITE_URL', defaultValue: 'https://litoho.dev', description: 'Public site URL')
+    string(name: 'SITE_URL', defaultValue: '', description: 'Public site URL. Leave blank to use http://DO_HOST')
     string(name: 'DO_SSH_CREDENTIALS_ID', defaultValue: 'digitalocean-ssh-key', description: 'Jenkins SSH private key credentials ID')
   }
 

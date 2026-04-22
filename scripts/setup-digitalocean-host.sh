@@ -5,7 +5,7 @@ APP_NAME="${APP_NAME:-litoho-landing-docs}"
 DEPLOY_USER="${DEPLOY_USER:-deploy}"
 DEPLOY_PATH="${DEPLOY_PATH:-/var/www/litoho-landing-docs}"
 APP_PORT="${APP_PORT:-3000}"
-DOMAIN="${DOMAIN:-litoho.dev}"
+DOMAIN="${DOMAIN:-_}"
 NODE_MAJOR="${NODE_MAJOR:-20}"
 SSH_PUBLIC_KEY="${SSH_PUBLIC_KEY:-}"
 
@@ -47,9 +47,9 @@ fi
 
 cat > "/etc/nginx/sites-available/${APP_NAME}" <<NGINX
 server {
-  listen 80;
-  listen [::]:80;
-  server_name ${DOMAIN} www.${DOMAIN};
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  server_name ${DOMAIN};
 
   location / {
     proxy_pass http://127.0.0.1:${APP_PORT};
@@ -77,6 +77,6 @@ ufw --force enable
 echo "Host setup complete."
 echo "Deploy user: ${DEPLOY_USER}"
 echo "Deploy path: ${DEPLOY_PATH}"
-echo "Domain: ${DOMAIN}"
+echo "Nginx server_name: ${DOMAIN}"
 echo "Node: $(node --version)"
 echo "npm: $(npm --version)"
