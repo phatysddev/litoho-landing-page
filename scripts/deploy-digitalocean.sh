@@ -15,6 +15,10 @@ DEPLOY_PATH="${DEPLOY_PATH:-/var/www/litoho-landing-docs}"
 SERVICE_NAME="${SERVICE_NAME:-litoho-landing-docs}"
 APP_PORT="${APP_PORT:-3000}"
 SITE_URL="${SITE_URL:-http://${DO_HOST}}"
+if [[ ! "${SITE_URL}" =~ ^https?:// ]]; then
+  echo "SITE_URL must start with http:// or https://. Received: ${SITE_URL}" >&2
+  exit 1
+fi
 KEEP_RELEASES="${KEEP_RELEASES:-5}"
 RELEASE_ID="${BUILD_NUMBER:-$(date +%Y%m%d%H%M%S)}"
 RELEASE_PATH="${DEPLOY_PATH}/releases/${RELEASE_ID}"
@@ -50,8 +54,8 @@ PORT=${APP_PORT}
 SITE_URL=${SITE_URL}
 ENV_FILE
 
-ln -sfn "${DEPLOY_PATH}/shared/.env" "${RELEASE_PATH}/.env"
-ln -sfn "${RELEASE_PATH}" "${DEPLOY_PATH}/current"
+ln -sfnT "${DEPLOY_PATH}/shared/.env" "${RELEASE_PATH}/.env"
+ln -sfnT "${RELEASE_PATH}" "${DEPLOY_PATH}/current"
 
 if command -v systemctl >/dev/null 2>&1; then
   sudo tee "/etc/systemd/system/${SERVICE_NAME}.service" >/dev/null <<UNIT_FILE
@@ -82,7 +86,12 @@ else
   exit 1
 fi
 
-find "${DEPLOY_PATH}/releases" -mindepth 1 -maxdepth 1 -type d | sort -r | tail -n +"$((KEEP_RELEASES + 1))" | xargs -r rm -rf
+current_release="$(readlink -f "${DEPLOY_PATH}/current")"
+find "${DEPLOY_PATH}/releases" -mindepth 1 -maxdepth 1 -type d | sort -Vr | tail -n +"$((KEEP_RELEASES + 1))" | while read -r old_release; do
+  if [[ "$(readlink -f "${old_release}")" != "${current_release}" ]]; then
+    rm -rf "${old_release}"
+  fi
+done
 REMOTE_SCRIPT
 
 echo "Deploy complete"
