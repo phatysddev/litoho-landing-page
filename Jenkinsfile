@@ -39,7 +39,11 @@ pipeline {
 
     stage('Build') {
       steps {
-        sh 'npm run build'
+        sh '''
+          set -eux
+          npm run generate:routes
+          npm run build
+        '''
       }
     }
 
