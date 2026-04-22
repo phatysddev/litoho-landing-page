@@ -70,6 +70,7 @@ export function createSeoDocument(title: string, description: string, pathname: 
     title,
     meta: [
       { name: "description", content: description },
+      { name: "author", content: "phatysddev" },
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },

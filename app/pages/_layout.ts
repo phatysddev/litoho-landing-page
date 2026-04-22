@@ -37,6 +37,28 @@ const layout: LitoLayoutModule<{ appName: string }> = {
         </nav>
       </header>
       ${children}
+      <footer class="border-t border-white/10 bg-slate-950/55">
+        <div class="mx-auto grid w-full max-w-7xl gap-6 px-4 py-8 text-sm text-slate-400 sm:px-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:px-8">
+          <div>
+            <p class="font-semibold text-white">Litoho is created and maintained by phatysddev.</p>
+            <p class="mt-2 max-w-2xl leading-7">
+              A Lit-first full-stack framework focused on explicit routing, SSR, app-owned components, UI primitives,
+              and production-ready server guardrails.
+            </p>
+          </div>
+          <nav class="flex flex-wrap items-center gap-3 lg:justify-end">
+            <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-amber-300/50 hover:text-white" href="https://github.com/phatysddev/lito">
+              GitHub repository
+            </a>
+            <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-amber-300/50 hover:text-white" href="https://www.npmjs.com/package/litoho">
+              npm package
+            </a>
+            <a class="rounded-full border border-white/10 px-4 py-2 transition hover:border-amber-300/50 hover:text-white" href="/docs/getting-started">
+              Getting Started Guide
+            </a>
+          </nav>
+        </div>
+      </footer>
     </div>
   `
 };
