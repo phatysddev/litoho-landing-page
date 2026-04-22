@@ -26,6 +26,18 @@ export const docsNavigation = [
     description: "Combine @litoho/ui primitives with app-local Lit components in src/components."
   },
   {
+    href: "/docs/state",
+    title: "State",
+    kicker: "Core",
+    description: "Use signal, memo, watch, batch, store, and LitoElement for reactive client UI."
+  },
+  {
+    href: "/docs/context",
+    title: "Context",
+    kicker: "Runtime",
+    description: "Understand page, layout, API, middleware, request locals, cookies, env, timing, and audit context."
+  },
+  {
     href: "/docs/seo",
     title: "SEO and SSR",
     kicker: "Visibility",

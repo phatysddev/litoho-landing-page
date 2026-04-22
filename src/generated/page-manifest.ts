@@ -26,6 +26,12 @@ export const pageManifest: LitoPageManifestEntry[] = [
     routePath: "/docs/comparison"
   },
   {
+    page: () => import("../../app/pages/docs/context/_index.ts"),
+    layouts: [{ key: "root", loader: () => import("../../app/pages/_layout.ts") }, { key: "docs", loader: () => import("../../app/pages/docs/_layout.ts") }],
+    routeId: "docs:context",
+    routePath: "/docs/context"
+  },
+  {
     page: () => import("../../app/pages/docs/deployment/_index.ts"),
     layouts: [{ key: "root", loader: () => import("../../app/pages/_layout.ts") }, { key: "docs", loader: () => import("../../app/pages/docs/_layout.ts") }],
     routeId: "docs:deployment",
@@ -54,6 +60,12 @@ export const pageManifest: LitoPageManifestEntry[] = [
     layouts: [{ key: "root", loader: () => import("../../app/pages/_layout.ts") }, { key: "docs", loader: () => import("../../app/pages/docs/_layout.ts") }],
     routeId: "docs:seo",
     routePath: "/docs/seo"
+  },
+  {
+    page: () => import("../../app/pages/docs/state/_index.ts"),
+    layouts: [{ key: "root", loader: () => import("../../app/pages/_layout.ts") }, { key: "docs", loader: () => import("../../app/pages/docs/_layout.ts") }],
+    routeId: "docs:state",
+    routePath: "/docs/state"
   },
   {
     page: () => import("../../app/pages/docs/ui/_index.ts"),
