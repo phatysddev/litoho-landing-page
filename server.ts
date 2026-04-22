@@ -88,7 +88,7 @@ const frameworkApp = createLitoServer({
           baseUri: ["'self'"],
           objectSrc: ["'none'"],
           frameAncestors: ["'none'"],
-          scriptSrc: ["'self'", "'unsafe-inline'"],
+          scriptSrc: ["'self'", "'unsafe-inline'", "https://static.cloudflareinsights.com"],
           styleSrc: ["'self'", "'unsafe-inline'"],
           imgSrc: ["'self'", "data:"],
           connectSrc: isProduction ? ["'self'"] : ["'self'", "ws://localhost:*", "http://localhost:*"]
