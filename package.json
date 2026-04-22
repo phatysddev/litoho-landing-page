@@ -5,8 +5,8 @@
   "scripts": {
     "generate:routes": "npm exec litoho -- generate routes --root .",
     "dev": "npm exec litoho -- dev --root .",
-    "build": "npm exec litoho -- build --root .",
-    "start": "npm exec litoho -- start --root ."
+    "build": "npm run generate:routes && npm exec vite -- build",
+    "start": "npm run generate:routes && NODE_ENV=production npm exec tsx -- server.ts"
   },
   "dependencies": {
     "@litoho/app": "^0.1.3",
