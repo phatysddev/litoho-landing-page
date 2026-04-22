@@ -33,7 +33,7 @@ const layout: LitoLayoutModule<{ appName: string }> = {
         <nav class="no-scrollbar flex gap-2 overflow-x-auto border-t border-white/10 px-4 py-2 text-xs text-slate-300 sm:px-6 lg:hidden">
           <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/">Framework</a>
           <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs">Docs</a>
-          <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs/getting-started">Start</a>
+          <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs/getting-started">Getting Started Guide</a>
           <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs/routing">Routing</a>
           <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs/ui">UI</a>
           <a class="shrink-0 rounded-full border border-white/10 bg-white/[0.03] px-3 py-1.5 transition hover:border-amber-300/50 hover:text-white" href="/docs/security">Security</a>
