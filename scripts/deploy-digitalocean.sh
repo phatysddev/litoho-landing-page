@@ -42,7 +42,7 @@ ssh "${SSH_OPTS[@]}" "${SSH_TARGET}" \
 set -euo pipefail
 
 cd "${RELEASE_PATH}"
-npm ci
+npm ci --omit=dev
 
 cat > "${DEPLOY_PATH}/shared/.env" <<ENV_FILE
 NODE_ENV=production
