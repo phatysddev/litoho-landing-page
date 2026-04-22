@@ -21,8 +21,23 @@
     min-height: 100vh;
     color: var(--color-lito-ink);
     background: transparent;
+    overflow-x: hidden;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: border-box;
+  }
+
+  img,
+  svg,
+  video,
+  canvas {
+    max-width: 100%;
+    height: auto;
   }
 
   a {
@@ -30,11 +45,22 @@
   }
 
   code {
+    max-width: 100%;
     font-family: "SFMono-Regular", "JetBrains Mono", "Menlo", monospace;
   }
 
   ::selection {
     background: rgba(248, 196, 68, 0.24);
     color: white;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 }

@@ -13,8 +13,49 @@ const page: LitoPageModule = {
   render: () => html`
     ${renderDocHero(
       "Getting Started",
-      "Create a Litoho app, understand the generated files, run the single-port dev server, and verify the first page, API route, build, and security doctor."
+      "Copy the commands, run the app, see the page, hit the API, then generate your first route. This guide is optimized for a first successful Litoho loop."
     )}
+
+    <section class="mb-8 overflow-hidden rounded-[2rem] border border-amber-300/20 bg-[radial-gradient(circle_at_top_left,rgba(248,196,68,0.16),transparent_32%),rgba(248,196,68,0.055)]">
+      <div class="grid gap-0 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <article class="p-5 sm:p-7">
+          <p class="text-[0.68rem] uppercase tracking-[0.24em] text-amber-200 sm:text-xs sm:tracking-[0.32em]">5-minute success path</p>
+          <h2 class="mt-4 text-3xl font-semibold tracking-[-0.055em] text-white sm:text-4xl">
+            From empty folder to SSR page, API route, and production build.
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">
+            If you are evaluating Litoho, start here. The goal is not to learn every concept yet. The goal is to prove
+            the framework loop works: scaffold, install, run, edit, generate, build.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a class="inline-flex min-h-11 items-center rounded-full bg-white px-5 text-sm font-semibold text-slate-950" href="#copy-run-success">
+              Copy commands
+            </a>
+            <a class="inline-flex min-h-11 items-center rounded-full border border-white/15 px-5 text-sm font-semibold text-white" href="#first-example-project">
+              See example project
+            </a>
+          </div>
+        </article>
+
+        <article id="copy-run-success" class="border-t border-white/10 bg-black/25 p-5 sm:p-7 lg:border-l lg:border-t-0">
+          <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Copy → run → success</p>
+          ${renderCodeBlock(`npm exec litoho@${version} -- new hello-litoho
+cd hello-litoho
+npm install
+npm run dev`)}
+          <div class="mt-5 grid gap-3 text-sm leading-7 text-slate-300">
+            <p>
+              <span class="font-semibold text-white">Success:</span>
+              open <code>http://localhost:3000</code> and you should see the generated Litoho homepage.
+            </p>
+            <p>
+              <span class="font-semibold text-white">API check:</span>
+              open <code>http://localhost:3000/api/health</code> and you should receive a JSON response.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <section class="mb-8 grid gap-6 lg:grid-cols-[minmax(0,0.82fr)_minmax(0,1.18fr)]">
       <article class="rounded-3xl border border-white/10 bg-white/3 p-6">
@@ -43,31 +84,117 @@ npm view litoho version`)}
 
     ${renderStepList([
       {
-        title: "Scaffold the app",
-        body: "Use the published CLI to generate a project that already follows Litoho routing, SSR, Tailwind, and server conventions.",
+        title: "1. Scaffold the app",
+        body: "This creates the project files, default routes, public assets, SSR server entry, Tailwind setup, and package scripts.",
         code: `npm exec litoho@${version} -- new my-app\ncd my-app`
       },
       {
-        title: "Install dependencies",
-        body: "The scaffold includes package scripts for route generation, dev, build, and production start. Install once from the project root.",
+        title: "2. Install dependencies",
+        body: "Install from inside the generated app. The app depends on the published Litoho packages and the litoho CLI.",
         code: `npm install`
       },
       {
-        title: "Start the dev server",
-        body: "Dev mode regenerates route manifests, starts the SSR server, and wires Vite client assets on the same app server.",
-        code: `npm run dev\n# open http://localhost:3000`
+        title: "3. Start the single-port dev server",
+        body: "Dev mode regenerates manifests, starts the SSR server, serves Vite client assets, and keeps page/API routing on one localhost port.",
+        code: `npm run dev
+
+# expected
+# Litoho dev server running at http://localhost:3000`
       },
       {
-        title: "Verify page and API routes",
-        body: "Confirm SSR HTML and API handlers are both reachable before adding product code.",
-        code: `curl http://localhost:3000\ncurl http://localhost:3000/api/health`
+        title: "4. Verify page and API routes",
+        body: "Confirm SSR HTML and API handlers are both reachable. This proves the full-stack routing layer is wired correctly.",
+        code: `curl http://localhost:3000
+curl http://localhost:3000/api/health
+
+# expected API shape
+# { "ok": true, ... }`
       },
       {
-        title: "Run doctor",
-        body: "Doctor validates route conventions and scans server security posture for production hardening gaps.",
-        code: `npm exec litoho -- doctor --root .`
+        title: "5. Run doctor before writing more code",
+        body: "Doctor validates route conventions and scans the server for missing security hardening. Run it early so problems stay small.",
+        code: `npm exec litoho -- doctor --root .
+
+# expected
+# Litoho doctor passed`
       }
     ])}
+
+    <section id="first-example-project" class="mt-12 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+      <article class="rounded-3xl border border-white/10 bg-slate-950/70 p-5 sm:p-6">
+        <p class="text-xs uppercase tracking-[0.28em] text-amber-300">Example project</p>
+        <h2 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">Build a tiny products section</h2>
+        <p class="mt-3 text-sm leading-7 text-slate-400">
+          After the app boots, generate a real feature slice: a list page, a dynamic detail page, and a typed API route.
+          This is the smallest useful example because it touches pages, params, APIs, manifests, and browser refresh.
+        </p>
+        ${renderCodeBlock(`npm exec litoho -- g p products
+npm exec litoho -- g p products --params id
+npm exec litoho -- g a products --params id --query q:number
+npm run dev`)}
+      </article>
+
+      <article class="rounded-3xl border border-white/10 bg-white/[0.03] p-5 sm:p-6">
+        <p class="text-xs uppercase tracking-[0.28em] text-slate-500">What you should see</p>
+        <div class="mt-5 grid gap-4">
+          <div class="rounded-2xl border border-white/10 bg-black/25 p-4">
+            <p class="text-sm font-semibold text-white">Page routes</p>
+            <p class="mt-2 text-sm leading-7 text-slate-400">
+              <code>/products</code> renders from <code>app/pages/products/_index.ts</code>.
+              <code>/products/123</code> renders from <code>app/pages/products/[id]/_index.ts</code>.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-white/10 bg-black/25 p-4">
+            <p class="text-sm font-semibold text-white">API route</p>
+            <p class="mt-2 text-sm leading-7 text-slate-400">
+              <code>/api/products/123?q=3</code> reaches <code>app/api/products/[id].ts</code> with typed
+              <code>params.id</code> and parsed <code>queryData.q</code>.
+            </p>
+          </div>
+          <div class="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-4">
+            <p class="text-sm font-semibold text-emerald-200">Success signal</p>
+            <p class="mt-2 text-sm leading-7 text-emerald-50/80">
+              If those three URLs work, you have completed the core Litoho loop.
+            </p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="mt-8 overflow-hidden rounded-3xl border border-white/10 bg-slate-950/70">
+      <div class="grid gap-0 lg:grid-cols-2">
+        <article class="border-b border-white/10 p-5 sm:p-6 lg:border-b-0 lg:border-r">
+          <p class="text-xs uppercase tracking-[0.28em] text-slate-500">Before</p>
+          <h2 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">Manual Lit full-stack glue</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-400">
+            You wire Vite, Lit SSR, page discovery, API routing, document metadata, middleware, static assets, and build
+            scripts yourself. It works, but the convention lives in your head.
+          </p>
+          ${renderCodeBlock(`src/
+server/
+routes.ts
+render-html.ts
+vite-middleware.ts
+api-router.ts
+metadata.ts
+...`)}
+        </article>
+
+        <article class="p-5 sm:p-6">
+          <p class="text-xs uppercase tracking-[0.28em] text-amber-300">After</p>
+          <h2 class="mt-4 text-2xl font-semibold tracking-[-0.04em] text-white">Litoho keeps the convention visible</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-400">
+            Your app is plain files: pages in <code>app/pages</code>, APIs in <code>app/api</code>, components in
+            <code>src/components</code>, and one <code>server.ts</code> boundary.
+          </p>
+          ${renderCodeBlock(`app/pages/products/_index.ts
+app/pages/products/[id]/_index.ts
+app/api/products/[id].ts
+src/components/product-card.ts
+server.ts`)}
+        </article>
+      </div>
+    </section>
 
     <section class="mt-12 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.78fr)]">
       <article class="rounded-3xl border border-white/10 bg-slate-950/70 p-6">

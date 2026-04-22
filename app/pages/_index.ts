@@ -64,13 +64,13 @@ const page: LitoPageModule = {
     <main>
       <section class="relative overflow-hidden border-b border-white/10">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_16%,_rgba(248,196,68,0.2),_transparent_25%),radial-gradient(circle_at_82%_18%,_rgba(56,189,248,0.16),_transparent_22%),linear-gradient(180deg,_rgba(2,6,23,0.72),_rgba(2,6,23,0.96))]"></div>
-        <div class="relative mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-7xl gap-16 px-6 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(20rem,0.98fr)] lg:items-center lg:py-20">
+        <div class="relative mx-auto grid min-h-[calc(100svh-6.75rem)] w-full max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:min-h-[calc(100svh-4rem)] lg:grid-cols-[minmax(0,1.02fr)_minmax(20rem,0.98fr)] lg:items-center lg:gap-16 lg:px-8 lg:py-20">
           <section class="max-w-3xl">
-            <div class="mb-6 inline-flex items-center gap-3 text-[0.7rem] uppercase tracking-[0.36em] text-amber-300">
-              <img src="/logo.png" alt="Litoho logo" class="h-10 w-10 object-contain" />
+            <div class="mb-6 inline-flex items-center gap-3 text-[0.66rem] uppercase tracking-[0.22em] text-amber-300 sm:text-[0.7rem] sm:tracking-[0.36em]">
+              <img src="/logo.png" alt="Litoho logo" class="h-9 w-9 object-contain sm:h-10 sm:w-10" />
               Litoho ${litohoVersion}
             </div>
-            <h1 class="text-5xl font-semibold tracking-[-0.08em] text-white sm:text-7xl lg:text-[5.8rem]">
+            <h1 class="text-4xl font-semibold tracking-[-0.065em] text-white sm:text-6xl lg:text-[5.8rem] lg:tracking-[-0.08em]">
               The Lit-first full-stack framework.
             </h1>
             <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
@@ -91,7 +91,7 @@ const page: LitoPageModule = {
                 Security Model
               </a>
             </div>
-            <div class="mt-10 flex flex-wrap items-center gap-4 text-sm text-slate-400">
+            <div class="mt-10 flex flex-wrap items-center gap-3 text-xs text-slate-400 sm:gap-4 sm:text-sm">
               <span>Lit SSR</span>
               <span class="h-1 w-1 rounded-full bg-slate-500"></span>
               <span>app/pages</span>
@@ -106,7 +106,7 @@ const page: LitoPageModule = {
 
           <aside class="relative">
             <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-br from-amber-300/18 via-transparent to-sky-300/10 blur-2xl"></div>
-            <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-slate-950/80 p-6 shadow-2xl shadow-black/30 backdrop-blur">
+            <div class="relative overflow-hidden rounded-[1.5rem] border border-white/10 bg-slate-950/80 p-4 shadow-2xl shadow-black/30 backdrop-blur sm:rounded-[2rem] sm:p-6">
               <div class="flex items-center justify-between border-b border-white/10 pb-4">
                 <div>
                   <p class="text-xs uppercase tracking-[0.28em] text-slate-400">Install</p>
@@ -116,7 +116,7 @@ const page: LitoPageModule = {
                   npm
                 </span>
               </div>
-              <div class="mt-5 rounded-2xl border border-white/10 bg-black/40 p-4 font-mono text-sm leading-7 text-slate-200">
+              <div class="mt-5 overflow-x-auto rounded-2xl border border-white/10 bg-black/40 p-4 font-mono text-xs leading-7 text-slate-200 sm:text-sm">
                 <div>$ npm exec litoho@${litohoVersion} -- new app</div>
                 <div>$ cd app</div>
                 <div>$ npm install</div>

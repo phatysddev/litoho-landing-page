@@ -9,9 +9,9 @@ const page: LitoNotFoundModule = {
     "/404"
   ),
   render: () => html`
-    <main class="mx-auto flex min-h-[calc(100svh-4rem)] w-full max-w-4xl flex-col justify-center px-6 py-20 sm:px-8">
-      <p class="text-xs uppercase tracking-[0.32em] text-amber-300">404</p>
-      <h1 class="mt-5 text-5xl font-semibold tracking-[-0.07em] text-white sm:text-7xl">This route is off the manifest.</h1>
+    <main class="mx-auto flex min-h-[calc(100svh-6.75rem)] w-full max-w-4xl flex-col justify-center px-4 py-16 sm:px-6 lg:min-h-[calc(100svh-4rem)] lg:px-8 lg:py-20">
+      <p class="text-xs uppercase tracking-[0.26em] text-amber-300 sm:tracking-[0.32em]">404</p>
+      <h1 class="mt-5 text-4xl font-semibold tracking-[-0.06em] text-white sm:text-6xl lg:text-7xl">This route is off the manifest.</h1>
       <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300">
         The page may have moved, or the route was never generated. Start from the docs map and continue from there.
       </p>

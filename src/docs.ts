@@ -111,19 +111,43 @@ export function renderDocsSidebar(pathname: string) {
   `;
 }
 
+export function renderDocsMobileNav(pathname: string) {
+  return html`
+    <nav class="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
+      ${docsNavigation.map((item) => {
+        const active = pathname === item.href;
+
+        return html`
+          <a
+            class=${[
+              "shrink-0 rounded-full border px-3.5 py-2 text-xs font-medium transition",
+              active
+                ? "border-white bg-white text-slate-950"
+                : "border-white/10 bg-white/[0.03] text-slate-300 hover:border-amber-300/50 hover:text-white"
+            ].join(" ")}
+            href=${item.href}
+          >
+            ${item.title}
+          </a>
+        `;
+      })}
+    </nav>
+  `;
+}
+
 export function renderDocHero(title: string, description: string) {
   return html`
-    <section class="mb-8 rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 sm:p-9">
-      <p class="text-xs uppercase tracking-[0.32em] text-amber-300">Documentation</p>
-      <h1 class="mt-4 text-4xl font-semibold tracking-[-0.06em] text-white sm:text-5xl">${title}</h1>
-      <p class="mt-4 max-w-3xl text-base leading-8 text-slate-300">${description}</p>
+    <section class="mb-6 rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5 sm:mb-8 sm:rounded-[2rem] sm:p-9">
+      <p class="text-[0.68rem] uppercase tracking-[0.22em] text-amber-300 sm:text-xs sm:tracking-[0.32em]">Documentation</p>
+      <h1 class="mt-4 text-3xl font-semibold tracking-[-0.055em] text-white sm:text-5xl">${title}</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-7 text-slate-300 sm:text-base sm:leading-8">${description}</p>
     </section>
   `;
 }
 
 export function renderCodeBlock(code: string) {
   return html`
-    <pre class="mt-5 overflow-x-auto rounded-[1.25rem] border border-white/10 bg-black/40 p-4 text-sm leading-7 text-slate-200"><code>${code}</code></pre>
+    <pre class="mt-5 max-w-full overflow-x-auto rounded-[1rem] border border-white/10 bg-black/40 p-3 text-[0.78rem] leading-6 text-slate-200 sm:rounded-[1.25rem] sm:p-4 sm:text-sm sm:leading-7"><code class="whitespace-pre">${code}</code></pre>
   `;
 }
 
@@ -138,12 +162,12 @@ export function renderStepList(
     <section class="grid gap-6">
       ${items.map(
         (item, index) => html`
-          <article class="rounded-[1.5rem] border border-white/10 bg-slate-950/70 p-6">
-            <div class="flex flex-wrap items-center gap-4">
-              <span class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-amber-300/30 bg-amber-300/10 text-sm font-semibold text-amber-200">
+          <article class="rounded-[1.35rem] border border-white/10 bg-slate-950/70 p-5 sm:rounded-[1.5rem] sm:p-6">
+            <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+              <span class="inline-flex h-8 w-8 items-center justify-center rounded-full border border-amber-300/30 bg-amber-300/10 text-xs font-semibold text-amber-200 sm:h-9 sm:w-9 sm:text-sm">
                 ${index + 1}
               </span>
-              <h2 class="text-2xl font-semibold tracking-[-0.04em] text-white">${item.title}</h2>
+              <h2 class="text-xl font-semibold tracking-[-0.04em] text-white sm:text-2xl">${item.title}</h2>
             </div>
             <p class="mt-4 text-sm leading-7 text-slate-400">${item.body}</p>
             ${renderCodeBlock(item.code)}
