@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { LitoPageModule } from "@litoho/app";
 import { createSeoDocument, renderCodeBlock, renderDocHero, renderStepList } from "../../../../src/docs";
 
-const version = "0.1.3";
+const version = "0.1.4";
 
 const page: LitoPageModule = {
   document: createSeoDocument(
@@ -86,6 +86,7 @@ npm view litoho version`)}
     health.ts          # /api/health
     _middleware.ts     # optional API middleware stack
 public/
+  favicon.svg
   logo.svg
   robots.txt
 src/

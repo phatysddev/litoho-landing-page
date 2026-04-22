@@ -2,7 +2,7 @@ import { html } from "lit";
 import type { LitoPageModule } from "@litoho/app";
 import { createSeoDocument, docsNavigation } from "../../src/docs";
 
-const litohoVersion = "0.1.3";
+const litohoVersion = "0.1.4";
 const featuredDocs = docsNavigation.slice(0, 6);
 
 const frameworkFacts = [
