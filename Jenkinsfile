@@ -18,10 +18,6 @@ pipeline {
     string(name: 'DO_SSH_CREDENTIALS_ID', defaultValue: 'digitalocean-ssh-key', description: 'Jenkins SSH private key credentials ID')
   }
 
-  environment {
-    NODE_ENV = 'production'
-  }
-
   stages {
     stage('Checkout') {
       steps {
@@ -33,7 +29,7 @@ pipeline {
       steps {
         sh 'node --version'
         sh 'npm --version'
-        sh 'npm ci'
+        sh 'npm ci --include=dev'
       }
     }
 
